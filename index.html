@@ -28,6 +28,16 @@
 </script>
 	
 <head>
+    <script type="text/javascript" src="https://www.datadoghq-browser-agent.com/us1/v4/datadog-logs.js"></script>
+    <script>
+      window.DD_LOGS &&
+        window.DD_LOGS.init({
+          clientToken: 'pubef515cb489a686906d98d4372124fa50',
+          site: 'datadoghq.com',
+          forwardErrorsToLogs: true,
+          sessionSampleRate: 100,
+        })
+    </script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Taka2 Introduction</title>
