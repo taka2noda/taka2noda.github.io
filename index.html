@@ -100,4 +100,57 @@
  
 </body>
 
+<head>
+<meta charset="UTF-8">
+<title>HTMLファイルからPOSTでJSONデータを送信する</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $("#response").html("response Values");
+
+        $("#button").click( function(){
+            // ここのURLはAPIのデプロイ時に表示されるURL（後述）に差し替える
+            var url = "https://79ifew9g4k.execute-api.us-east-1.amazonaws.com/test";
+                var JSONdata = {
+                    "message": $("#text").val()
+                };
+
+            alert(JSON.stringify(JSONdata));
+
+            $.ajax({
+                type : 'post',
+                url : url,
+                data : JSON.stringify(JSONdata),
+                contentType: 'application/json',
+                dataType : 'json',
+                scriptCharset: 'utf-8',
+                success : function(data) {
+
+                    // Success
+                    alert("success");
+                    alert(JSON.stringify(data));
+                    $("#response").html(JSON.stringify(data));
+                },
+                error : function(data) {
+
+                    // Error
+                    alert("error");
+                    alert(JSON.stringify(data));
+                    $("#response").html(JSON.stringify(data));
+                }
+            });
+        })
+    })
+</script>
+
+</head>
+<body>
+    <h1>質問があればこちらにどうぞ！Bedrockアシスタントが回答します。</h1>
+    <p>質問内容: <input type="text" id="text" size="100" placeholder="質問内容を入力してください"></p>
+    <p><button id="button" type="button">送信</button></p>
+    <textarea id="response" cols=120 rows=10 disabled></textarea>
+</body>
+</html>
+
 </html>
