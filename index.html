@@ -141,19 +141,19 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: rgba(120, 119, 198, 0.2);
-			border: 1px solid rgba(120, 119, 198, 0.3);
+			background: rgba(220, 152, 253, 0.2);
+			border: 1px solid rgba(220, 152, 253, 0.3);
 			border-radius: 12px;
-			color: #7877c6;
+			color: #dc98fd;
 			font-size: 1.3rem;
 			transition: all 0.3s ease;
 		}
 
 		.contact-icons a:hover {
-			background: rgba(120, 119, 198, 0.3);
-			border-color: #7877c6;
+			background: rgba(220, 152, 253, 0.3);
+			border-color: #dc98fd;
 			transform: translateY(-5px);
-			box-shadow: 0 10px 30px rgba(120, 119, 198, 0.3);
+			box-shadow: 0 10px 30px rgba(220, 152, 253, 0.3);
 		}
 
 		.tabs-container {
@@ -211,7 +211,7 @@
 		}
 
 		h2 {
-			color: #7877c6;
+			color: #dc98fd;
 			font-size: 1.4rem;
 			margin-bottom: 1.5rem;
 			font-weight: 600;
@@ -225,13 +225,13 @@
 		}
 
 		li {
-			padding: 1rem 0;
 			border-bottom: 1px solid rgba(255,255,255,0.05);
-			line-height: 1.7;
-			transition: padding-left 0.3s ease;
+			transition: all 0.3s ease;
+			position: relative;
 		}
 
 		li:hover {
+			background: rgba(120, 119, 198, 0.08);
 			padding-left: 0.5rem;
 		}
 
@@ -239,14 +239,73 @@
 			border-bottom: none;
 		}
 
-		a {
+		li a {
 			color: #a78bfa;
 			text-decoration: none;
 			transition: color 0.3s ease;
+			display: block;
+			padding: 1rem 0;
+			line-height: 1.7;
 		}
 
-		a:hover {
-			color: #dc98fd;
+		li:nth-child(even) a {
+			color: #7877c6;
+		}
+
+		li a:hover {
+			color: #ffffff;
+		}
+
+		.badge-container {
+			display: flex;
+			gap: 1.5rem;
+			flex-wrap: wrap;
+			padding: 1rem 0;
+		}
+
+		.badge-container a {
+			display: block;
+			transition: transform 0.3s ease;
+		}
+
+		.badge-container a:hover {
+			transform: scale(1.1);
+		}
+
+		.badge-container img {
+			width: 100px;
+			height: 100px;
+			border-radius: 8px;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+		}
+
+		.job-list {
+			list-style: none;
+		}
+
+		.job-list li {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			font-size: 1.1rem;
+			font-weight: 500;
+		}
+
+		.job-list .company-logo {
+			width: 40px;
+			height: 40px;
+			border-radius: 8px;
+			background: rgba(220, 152, 253, 0.1);
+			padding: 6px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.job-list .company-logo img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
 		}
 
 		@media (max-width: 768px) {
@@ -296,63 +355,97 @@
 
 			<div id="profile" class="tab-content active">
 				<h2>👨‍💻 Job</h2>
-				<ul>
-					<li>Sales Engineer, Datadog (Feb 2022~)</li>
-					<li>ex. Platform SRE and Delivery Program Manager, Kyndryl & IBM (~Feb 2022)</li>
+				<ul class="job-list">
+					<li>
+						<span class="company-logo">
+							<img src="images/datadog-logo.svg" alt="Datadog">
+						</span>
+						<span>Sales Engineer, Datadog (Feb 2022~)</span>
+					</li>
+					<li>
+						<span class="company-logo">
+							<img src="images/kyndryl-logo.avif" alt="Kyndryl">
+						</span>
+						<span class="company-logo">
+							<img src="images/ibm-logo.svg" alt="IBM">
+						</span>
+						<span>ex. Platform SRE and Delivery Program Manager, Kyndryl & IBM (~Feb 2022)</span>
+					</li>
 				</ul>
 
 				<h2 style="margin-top: 2rem;">📜 Certifications</h2>
-				<ul>
-					<li>Project Management Professional (PMP)®</li>
-					<li>ITIL® Foundation Certificate in IT Service Management</li>
-					<li>Datadog All Certified</li>
-					<li>Other > <a href="https://www.credly.com/users/tsunoda-takaaki/badges" target="_blank">credly</a> / <a href="https://google.accredible.com/profile/taka2" target="_blank">accredible</a></li>
-				</ul>
+				<div class="badge-container">
+					<a href="https://www.credly.com/badges/52c5f3c6-a2be-4c3b-b7da-10766984db49" target="_blank" title="Project Management Professional (PMP)®">
+						<img src="images/pmp-badge.png" alt="PMP Badge">
+					</a>
+					<a href="https://mylogin.exin.nl/?Script=GetLinkedInPost&CandidateCertificateGUID=6B5D907C-A8B8-40C5-A233-8D0157A31822&ts=1666776000" target="_blank" title="ITIL® Foundation Certificate">
+						<img src="images/itil-badge.png" alt="ITIL Badge">
+					</a>
+					<a href="https://www.credly.com/badges/a12ad02f-a516-4c71-98f8-395282c9cce0" target="_blank" title="Datadog Certified: APM & Distributed Tracing Fundamentals">
+						<img src="images/datadog-badge-1.png" alt="Datadog APM Badge">
+					</a>
+					<a href="https://www.credly.com/badges/dff0f125-57ad-490e-a6cb-9cc64ac351eb" target="_blank" title="Datadog Certified: Log Management Fundamentals">
+						<img src="images/datadog-badge-2.png" alt="Datadog Log Management Badge">
+					</a>
+					<a href="https://www.credly.com/badges/1cd9e57c-edae-4b2c-8f19-a2dccdfed752" target="_blank" title="Datadog Certified: Datadog Fundamentals">
+						<img src="images/datadog-badge-3.png" alt="Datadog Fundamentals Badge">
+					</a>
+					<a href="https://www.credly.com/badges/88e24dae-a911-4606-9888-c02af47a58ef" target="_blank" title="Datadog Certified">
+						<img src="images/datadog-badge-4.png" alt="Datadog Badge 4">
+					</a>
+					<a href="https://www.credly.com/badges/aa0e28d0-a6b3-44b3-bc71-c273d1361e53" target="_blank" title="Datadog Certified">
+						<img src="images/datadog-badge-5.png" alt="Datadog Badge 5">
+					</a>
+					<a href="https://www.credly.com/badges/f9eb1e10-03f8-4928-a482-2e50275fcb8d" target="_blank" title="Datadog Certified">
+						<img src="images/datadog-badge-6.png" alt="Datadog Badge 6">
+					</a>
+				</div>
 			</div>
 
 			<div id="projects" class="tab-content">
 				<h2>🤝 Open Source Contributions</h2>
 				<ul>
-					<li><a href="https://github.com/awslabs/amazon-bedrock-agentcore-samples/pull/951" target="_blank">AWS Labs - Amazon Bedrock AgentCore Samples</a> - PR: Make AWS region configurable via environment variable (Open, Feb 2026)</li>
-					<li><a href="https://github.com/awslabs/amazon-bedrock-agentcore-samples/issues/150" target="_blank">AWS Labs - Amazon Bedrock AgentCore Samples</a> - Issue: 404 Not Found Error in observability tutorial (Open, Jul 2025)</li>
-					<li><a href="https://github.com/minorun365/agent-book/issues/22" target="_blank">minorun365/agent-book</a> - Issue: Command error in chapter4 copy-paste commands (Closed, Dec 2025)</li>
-					<li><a href="https://github.com/GoogleCloudPlatform/microservices-demo/issues/1847" target="_blank">Google Cloud Platform - microservices-demo</a> - Issue: Feature suggestion for PHP service (Closed, Jun 2023)</li>
+					<li><a href="https://github.com/awslabs/amazon-bedrock-agentcore-samples/pull/951" target="_blank">AWS Labs - Amazon Bedrock AgentCore Samples - PR: Make AWS region configurable via environment variable (Open, Feb 2026)</a></li>
+					<li><a href="https://github.com/awslabs/amazon-bedrock-agentcore-samples/issues/150" target="_blank">AWS Labs - Amazon Bedrock AgentCore Samples - Issue: 404 Not Found Error in observability tutorial (Open, Jul 2025)</a></li>
+					<li><a href="https://github.com/minorun365/agent-book/issues/22" target="_blank">minorun365/agent-book - Issue: Command error in chapter4 copy-paste commands (Closed, Dec 2025)</a></li>
+					<li><a href="https://github.com/GoogleCloudPlatform/microservices-demo/issues/1847" target="_blank">Google Cloud Platform - microservices-demo - Issue: Feature suggestion for PHP service (Closed, Jun 2023)</a></li>
 				</ul>
 
 				<h2 style="margin-top: 2rem;">💻 Public Sample Datadog Apps</h2>
 				<ul>
-					<li><a href="https://github.com/taka2noda/Datadog-llm-ops-sample-taka2" target="_blank">Datadog-llm-ops-sample-taka2</a> - Datadog LLM Observability Sample Applications (6 sample projects covering AWS ECS, Docker, APM)</li>
-					<li><a href="https://github.com/taka2noda/taka2-llobs-otel-strands-sample" target="_blank">taka2-llobs-otel-strands-sample</a> - LLM Observability with OpenTelemetry integration sample</li>
-					<li>Other > <a href="https://github.com/taka2noda" target="_blank">GitHub Profile</a></li>
+					<li><a href="https://github.com/taka2noda/Datadog-llm-ops-sample-taka2" target="_blank">Datadog-llm-ops-sample-taka2 - Datadog LLM Observability Sample Applications (6 sample projects covering AWS ECS, Docker, APM)</a></li>
+					<li><a href="https://github.com/taka2noda/taka2-llobs-otel-strands-sample" target="_blank">taka2-llobs-otel-strands-sample - LLM Observability with OpenTelemetry integration sample</a></li>
 				</ul>
 			</div>
 
 			<div id="content" class="tab-content">
 				<h2>📚 Decks and Blogs</h2>
 				<ul>
-					<li><a href="https://www.datadoghq.com/ja/blog/datadog-live-tokyo-2025-recap/" target="_blank">Datadog Live Tokyo 2025 Fireside Chat「AI Agentで実現するAIOps – Bits AI SRE 国内活用事例 – 」開催レポート</a> - Datadog Blog (Feb 6, 2026)</li>
-					<li><a href="https://qiita.com/Taka2Noda/items/8a6aa17ee0d41b96a203" target="_blank">LangGraphで構築したAI エージェントをDatadogで監視する方法と見え方</a> - Qiita (Dec 4, 2025)</li>
-					<li><a href="https://qiita.com/Taka2Noda/items/44f38aefa9c87eab166c" target="_blank">Datadog LLM Observability を AWS Lambda(Python, Bedrock)に対して設定する</a> - Qiita (Jul 14, 2025)</li>
-					<li><a href="https://speakerdeck.com/taka2noda/ai-agent-observability-datadog-2025-ja" target="_blank">AI エージェントの実運用を支えるオブザーバビリティの実践</a> - Speaker Deck (2025)</li>
-					<li><a href="https://speakerdeck.com/taka2noda/datadogdeshi-xian-surusekiyuritei-obuzababiritei" target="_blank">Datadogで実現するセキュリティ オブザーバビリティ</a> - Security-JAWS 29th Study Session</li>
-					<li><a href="https://speakerdeck.com/taka2noda/phpdegou-zhu-sitawordpresswoobservabilityturudejian-temiru-phperkaigi-2023" target="_blank">PHPで構築したWordPressをObservabilityツールで見てみる</a> - PHPerKaigi 2023</li>
-					<li>Other > <a href="https://speakerdeck.com/taka2noda" target="_blank">Speakerdecks</a> / <a href="https://qiita.com/Taka2Noda" target="_blank">Qiita</a> / <a href="https://note.com/taka2noda" target="_blank">Note</a></li>
+					<li><a href="https://www.datadoghq.com/ja/blog/datadog-live-tokyo-2025-recap/" target="_blank">Datadog Live Tokyo 2025 Fireside Chat「AI Agentで実現するAIOps – Bits AI SRE 国内活用事例 – 」開催レポート (Feb 6, 2026)</a></li>
+					<li><a href="https://qiita.com/Taka2Noda/items/8a6aa17ee0d41b96a203" target="_blank">LangGraphで構築したAI エージェントをDatadogで監視する方法と見え方 (Dec 4, 2025)</a></li>
+					<li><a href="https://speakerdeck.com/taka2noda/datadogtoai-huo-yong-tojian-shi-er-tunoshi-dian-karajian-ruobuzababiritei" target="_blank">DatadogとAI：活用と監視、 二つの視点から見るオブザーバビリティ (Sep 5, 2025)</a></li>
+					<li><a href="https://speakerdeck.com/taka2noda/ai-agent-observability-datadog-2025-ja" target="_blank">AI エージェントの実運用を支えるオブザーバビリティの実践 (Jul 24, 2025)</a></li>
+					<li><a href="https://qiita.com/Taka2Noda/items/44f38aefa9c87eab166c" target="_blank">Datadog LLM Observability を AWS Lambda(Python, Bedrock)に対して設定する (Jul 14, 2025)</a></li>
+					<li><a href="https://speakerdeck.com/taka2noda/datadogdeshi-xian-surusekiyuritei-obuzababiritei" target="_blank">Datadogで実現するセキュリティ オブザーバビリティ (May 25, 2023)</a></li>
+					<li><a href="https://speakerdeck.com/taka2noda/phpdegou-zhu-sitawordpresswoobservabilityturudejian-temiru-phperkaigi-2023" target="_blank">PHPで構築したWordPressをObservabilityツールで見てみる (Mar 24, 2023)</a></li>
 				</ul>
 			</div>
 
 			<div id="speaking" class="tab-content">
 				<h2>🎤 Public Speaking</h2>
 				<ul>
-					<li><a href="https://www.event-site.info/datadog-live-tokyo-2025/" target="_blank">Datadog Live Tokyo 2025</a> - Fireside Chat: AI Agent で実現する AIOps ― Bits AI SRE 国内活用事例 ― (Dec 16, 2025)</li>
-					<li><a href="https://cloud.watch.impress.co.jp/docs/event/2045339.html" target="_blank">Cloud Operator Days Tokyo 2025</a> - AIエージェントの実運用を支えるオブザーバビリティの実践 🏆 Audience Award (Sep 5, 2025)</li>
-					<li><a href="https://www.datadoghq.com/ja/event/awsgenai/" target="_blank">DatadogでAWS生成AIスタックを監視する</a> - Datadog Webinar (Aug 7, 2024)</li>
-					<li><a href="https://jaguer.jp/collaborate_btw_securityo11y/" target="_blank">Jaguer Observability/SRE and Security Subcommittee Collaboration MeetUp</a> (Jun 22, 2023)</li>
-					<li><a href="https://s-jaws.doorkeeper.jp/events/155023" target="_blank">Security-JAWS 29th Study Session</a> (May 25, 2023)</li>
-					<li><a href="https://fortee.jp/phperkaigi-2023/proposal/f4d1dc93-718b-44c7-8be2-edd66a253e63" target="_blank">PHPerKaigi 2023</a> (Mar 24, 2023)</li>
-					<li><a href="https://jaguer.jp/observability-sre-%e5%88%86%e7%a7%91%e4%bc%9a-%e3%80%90%e7%ac%ac4%e5%9b%9e%e3%80%91meetup%e9%96%8b%e5%82%ac%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81/" target="_blank">Jaguer Observability/SRE Subcommittee 4th MeetUp</a> (Feb 2, 2023)</li>
-					<li><a href="https://enq.itmedia.co.jp/on24u/form/cnw2209?partnerref=cl#session3-4" target="_blank">ITmedia Cloud Native Week 2022 Autumn</a> (Sep 16, 2022)</li>
-					<li><a href="https://www.datadoghq.com/ja/dg/webinars/logs-webinar-ja/" target="_blank">Datadog Japan OnDemand Webinar</a> (Jul 28, 2022)</li>
-					<li><a href="https://www.ibm.com/events/sre/sessions/#SRE-092" target="_blank">SRE conference@IBM</a> (Nov 9, 2021)</li>
+					<li><a href="https://www.event-site.info/datadog-live-tokyo-2025/" target="_blank">Datadog Live Tokyo 2025 - Fireside Chat: AI Agent で実現する AIOps ― Bits AI SRE 国内活用事例 ― (Dec 16, 2025)</a></li>
+					<li><a href="https://events.datadoghq.com/ja/summits/datadog-summit-tokyo/agenda/ai-llm" target="_blank">Datadog Summit Tokyo 2025 - ワークショップ 小さな LLM アプリの構築と動作の可視化 (Oct 16, 2025)</a></li>
+					<li><a href="https://cloud.watch.impress.co.jp/docs/event/2045339.html" target="_blank">Cloud Operator Days Tokyo 2025 - AIエージェントの実運用を支えるオブザーバビリティの実践 🏆 Audience Award (Sep 5, 2025)</a></li>
+					<li><a href="https://www.datadoghq.com/ja/summit/tokyo24/agenda/dd101_sre/" target="_blank">Datadog Summit Tokyo 2024 - ワークショップ Datadog 101：SRE（サイト・リライアビリティ・エンジニアリング) (Oct 16, 2024)</a></li>
+					<li><a href="https://www.datadoghq.com/ja/event/awsgenai/" target="_blank">Datadog Webinar - DatadogでAWS生成AIスタックを監視する (Aug 7, 2024)</a></li>
+					<li><a href="https://jaguer.jp/collaborate_btw_securityo11y/" target="_blank">Jaguer Observability/SRE and Security Subcommittee Collaboration MeetUp (Jun 22, 2023)</a></li>
+					<li><a href="https://s-jaws.doorkeeper.jp/events/155023" target="_blank">Security-JAWS 29th Study Session - Datadogで実現するセキュリティオブザーバビリティ (May 25, 2023)</a></li>
+					<li><a href="https://fortee.jp/phperkaigi-2023/proposal/f4d1dc93-718b-44c7-8be2-edd66a253e63" target="_blank">PHPerKaigi 2023 - PHPで構築したWordPressをObservabilityツールで見てみる (Mar 24, 2023)</a></li>
+					<li><a href="https://jaguer.jp/observability-sre-%e5%88%86%e7%a7%91%e4%bc%9a-%e3%80%90%e7%ac%ac4%e5%9b%9e%e3%80%91meetup%e9%96%8b%e5%82%ac%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81/" target="_blank">Jaguer Observability/SRE Subcommittee 4th MeetUp - Observabilityツールを入れるとなにがおいしいの？ (Feb 2, 2023)</a></li>
+					<li><a href="https://enq.itmedia.co.jp/on24u/form/cnw2209?partnerref=cl#session3-4" target="_blank">ITmedia Cloud Native Week 2022 Autumn - 複雑化し高頻度化するセキュリティ脅威を可視化して対処する方法 (Sep 16, 2022)</a></li>
+					<li><a href="https://www.datadoghq.com/ja/dg/webinars/logs-webinar-ja/" target="_blank">Datadog Japan OnDemand Webinar - Datadog ログ管理で機密データを保護する方法 (Jul 28, 2022)</a></li>
+					<li><a href="https://www.ibm.com/events/sre/sessions/#SRE-092" target="_blank">SRE conference@IBM - How to adopt SRE practice for 500 member's outsourcing project (Nov 9, 2021)</a></li>
 				</ul>
 			</div>
 		</div>
