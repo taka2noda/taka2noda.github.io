@@ -41,7 +41,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Taka2 Introduction</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
 	<style>
 		* {
 			margin: 0;
@@ -87,6 +87,12 @@
 			margin-bottom: -60px;
 			position: relative;
 			border: 1px solid rgba(255,255,255,0.1);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		.header-banner.fade-out {
+			opacity: 0;
+			transform: scale(0.98);
 		}
 
 		.profile-section {
@@ -329,12 +335,12 @@
 
 <body>
 	<div class="container">
-		<img class="header-banner" src="header-taka2.jpeg" alt="Header Image">
+		<img class="header-banner" src="images/header1.jpeg" alt="Header Image">
 
 		<div class="profile-section">
 			<div class="profile-info">
 				<div class="profile-left">
-					<img class="profile-icon" src="icon-taka2.jpeg" alt="Profile Icon">
+					<img class="profile-icon" src="images/icon-taka2.jpeg" alt="Profile Icon">
 					<h1>Hello, I'm Takaaki Tsunoda 👋</h1>
 				</div>
 				<div class="contact-icons">
@@ -347,10 +353,10 @@
 
 		<div class="tabs-container">
 			<div class="tab-buttons">
-				<button class="tab-button active" onclick="openTab(event, 'profile')">👨‍💻 Profile</button>
-				<button class="tab-button" onclick="openTab(event, 'projects')">💻 Projects</button>
-				<button class="tab-button" onclick="openTab(event, 'content')">📚 Content</button>
-				<button class="tab-button" onclick="openTab(event, 'speaking')">🎤 Speaking</button>
+				<button class="tab-button active" onclick="openTab(event, 'profile')" data-image="images/header1.jpeg">👨‍💻 Profile</button>
+				<button class="tab-button" onclick="openTab(event, 'projects')" data-image="images/header2.jpg">💻 Projects</button>
+				<button class="tab-button" onclick="openTab(event, 'content')" data-image="images/header3.png">📚 Content</button>
+				<button class="tab-button" onclick="openTab(event, 'speaking')" data-image="images/header4-1.jpg">🎤 Speaking</button>
 			</div>
 
 			<div id="profile" class="tab-content active">
@@ -467,6 +473,21 @@
 
 			document.getElementById(tabName).classList.add("active");
 			evt.currentTarget.classList.add("active");
+
+			// ヘッダー画像の切り替え
+			var newImage = evt.currentTarget.getAttribute('data-image');
+			if (newImage) {
+				var headerBanner = document.querySelector('.header-banner');
+
+				// フェードアウト効果
+				headerBanner.classList.add('fade-out');
+
+				// 画像を切り替え
+				setTimeout(function() {
+					headerBanner.src = newImage;
+					headerBanner.classList.remove('fade-out');
+				}, 250);
+			}
 		}
 	</script>
 </body>
