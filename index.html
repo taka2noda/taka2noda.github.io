@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	
+
 <script
     src="https://www.datadoghq-browser-agent.com/us1/v5/datadog-rum.js"
     type="text/javascript">
@@ -12,7 +12,6 @@
       site: 'datadoghq.com',
       service: 'taka2noda.github.io',
       env: 'prod',
-      // Specify a version number to identify the deployed version of your application in Datadog 
       version: '1.0.1',
       sessionSampleRate: 100,
       sessionReplaySampleRate: 100,
@@ -26,7 +25,7 @@
     window.DD_RUM &&
     window.DD_RUM.startSessionReplayRecording();
 </script>
-	
+
 <head>
     <script type="text/javascript" src="https://www.datadoghq-browser-agent.com/us1/v4/datadog-logs.js"></script>
     <script>
@@ -41,63 +40,342 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Taka2 Introduction</title>
-	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			background: #0a0e27;
+			min-height: 100vh;
+			color: #e2e8f0;
+			position: relative;
+			overflow-x: hidden;
+		}
+
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background:
+				radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15), transparent 50%),
+				radial-gradient(circle at 80% 80%, rgba(88, 28, 135, 0.15), transparent 50%);
+			z-index: 0;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 2rem;
+			position: relative;
+			z-index: 1;
+		}
+
+		.header-banner {
+			width: 100%;
+			height: 250px;
+			object-fit: cover;
+			border-radius: 12px;
+			margin-bottom: -60px;
+			position: relative;
+			border: 1px solid rgba(255,255,255,0.1);
+		}
+
+		.profile-section {
+			background: rgba(15, 23, 42, 0.8);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255,255,255,0.1);
+			border-radius: 12px;
+			padding: 5rem 3rem 2rem;
+			margin-bottom: 2rem;
+			box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+		}
+
+		.profile-info {
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+			justify-content: space-between;
+		}
+
+		.profile-left {
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+		}
+
+		.profile-icon {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 3px solid #7877c6;
+			box-shadow: 0 0 30px rgba(120, 119, 198, 0.5);
+		}
+
+		h1 {
+			color: #ffffff;
+			font-size: 2.5rem;
+			font-weight: 700;
+			background: linear-gradient(135deg, #7877c6 0%, #dc98fd 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.contact-icons {
+			display: flex;
+			gap: 1rem;
+		}
+
+		.contact-icons a {
+			width: 50px;
+			height: 50px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(120, 119, 198, 0.2);
+			border: 1px solid rgba(120, 119, 198, 0.3);
+			border-radius: 12px;
+			color: #7877c6;
+			font-size: 1.3rem;
+			transition: all 0.3s ease;
+		}
+
+		.contact-icons a:hover {
+			background: rgba(120, 119, 198, 0.3);
+			border-color: #7877c6;
+			transform: translateY(-5px);
+			box-shadow: 0 10px 30px rgba(120, 119, 198, 0.3);
+		}
+
+		.tabs-container {
+			background: rgba(15, 23, 42, 0.6);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255,255,255,0.1);
+			border-radius: 12px;
+			overflow: hidden;
+		}
+
+		.tab-buttons {
+			display: flex;
+			flex-wrap: wrap;
+			border-bottom: 1px solid rgba(255,255,255,0.1);
+			background: rgba(15, 23, 42, 0.8);
+		}
+
+		.tab-button {
+			padding: 1rem 1.5rem;
+			background: transparent;
+			border: none;
+			color: #a78bfa;
+			cursor: pointer;
+			font-size: 1rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			border-bottom: 3px solid transparent;
+			font-family: inherit;
+		}
+
+		.tab-button:hover {
+			background: rgba(120, 119, 198, 0.1);
+			color: #dc98fd;
+		}
+
+		.tab-button.active {
+			color: #7877c6;
+			border-bottom-color: #7877c6;
+			background: rgba(120, 119, 198, 0.15);
+		}
+
+		.tab-content {
+			display: none;
+			padding: 2rem;
+			animation: fadeIn 0.3s ease;
+		}
+
+		.tab-content.active {
+			display: block;
+		}
+
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(10px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		h2 {
+			color: #7877c6;
+			font-size: 1.4rem;
+			margin-bottom: 1.5rem;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		li {
+			padding: 1rem 0;
+			border-bottom: 1px solid rgba(255,255,255,0.05);
+			line-height: 1.7;
+			transition: padding-left 0.3s ease;
+		}
+
+		li:hover {
+			padding-left: 0.5rem;
+		}
+
+		li:last-child {
+			border-bottom: none;
+		}
+
+		a {
+			color: #a78bfa;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		a:hover {
+			color: #dc98fd;
+		}
+
+		@media (max-width: 768px) {
+			.tab-button {
+				padding: 0.8rem 1rem;
+				font-size: 0.9rem;
+			}
+			h1 {
+				font-size: 2rem;
+			}
+			.profile-info {
+				flex-direction: column;
+				text-align: center;
+			}
+			.profile-left {
+				flex-direction: column;
+			}
+		}
+	</style>
 </head>
 
 <body>
-	<img class="header" src="header-taka2.jpeg" alt="Header Image">
-	<div class="profile">
-		<img class="profile-icon" src="icon-taka2.jpeg" alt="Profile Icon">
-		<h1>Hello, I'm Takaaki Tsunoda &#x1F44B;</h1>
+	<div class="container">
+		<img class="header-banner" src="header-taka2.jpeg" alt="Header Image">
+
+		<div class="profile-section">
+			<div class="profile-info">
+				<div class="profile-left">
+					<img class="profile-icon" src="icon-taka2.jpeg" alt="Profile Icon">
+					<h1>Hello, I'm Takaaki Tsunoda 👋</h1>
+				</div>
+				<div class="contact-icons">
+					<a href="https://www.linkedin.com/in/takaaki-tsunoda/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+					<a href="https://twitter.com/taka2noda" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+					<a href="https://github.com/taka2noda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-container">
+			<div class="tab-buttons">
+				<button class="tab-button active" onclick="openTab(event, 'profile')">👨‍💻 Profile</button>
+				<button class="tab-button" onclick="openTab(event, 'projects')">💻 Projects</button>
+				<button class="tab-button" onclick="openTab(event, 'content')">📚 Content</button>
+				<button class="tab-button" onclick="openTab(event, 'speaking')">🎤 Speaking</button>
+			</div>
+
+			<div id="profile" class="tab-content active">
+				<h2>👨‍💻 Job</h2>
+				<ul>
+					<li>Sales Engineer, Datadog (Feb 2022~)</li>
+					<li>ex. Platform SRE and Delivery Program Manager, Kyndryl & IBM (~Feb 2022)</li>
+				</ul>
+
+				<h2 style="margin-top: 2rem;">📜 Certifications</h2>
+				<ul>
+					<li>Project Management Professional (PMP)®</li>
+					<li>ITIL® Foundation Certificate in IT Service Management</li>
+					<li>Datadog All Certified</li>
+					<li>Other > <a href="https://www.credly.com/users/tsunoda-takaaki/badges" target="_blank">credly</a> / <a href="https://google.accredible.com/profile/taka2" target="_blank">accredible</a></li>
+				</ul>
+			</div>
+
+			<div id="projects" class="tab-content">
+				<h2>🤝 Open Source Contributions</h2>
+				<ul>
+					<li><a href="https://github.com/awslabs/amazon-bedrock-agentcore-samples/pull/951" target="_blank">AWS Labs - Amazon Bedrock AgentCore Samples</a> - PR: Make AWS region configurable via environment variable (Open, Feb 2026)</li>
+					<li><a href="https://github.com/awslabs/amazon-bedrock-agentcore-samples/issues/150" target="_blank">AWS Labs - Amazon Bedrock AgentCore Samples</a> - Issue: 404 Not Found Error in observability tutorial (Open, Jul 2025)</li>
+					<li><a href="https://github.com/minorun365/agent-book/issues/22" target="_blank">minorun365/agent-book</a> - Issue: Command error in chapter4 copy-paste commands (Closed, Dec 2025)</li>
+					<li><a href="https://github.com/GoogleCloudPlatform/microservices-demo/issues/1847" target="_blank">Google Cloud Platform - microservices-demo</a> - Issue: Feature suggestion for PHP service (Closed, Jun 2023)</li>
+				</ul>
+
+				<h2 style="margin-top: 2rem;">💻 Public Sample Datadog Apps</h2>
+				<ul>
+					<li><a href="https://github.com/taka2noda/Datadog-llm-ops-sample-taka2" target="_blank">Datadog-llm-ops-sample-taka2</a> - Datadog LLM Observability Sample Applications (6 sample projects covering AWS ECS, Docker, APM)</li>
+					<li><a href="https://github.com/taka2noda/taka2-llobs-otel-strands-sample" target="_blank">taka2-llobs-otel-strands-sample</a> - LLM Observability with OpenTelemetry integration sample</li>
+					<li>Other > <a href="https://github.com/taka2noda" target="_blank">GitHub Profile</a></li>
+				</ul>
+			</div>
+
+			<div id="content" class="tab-content">
+				<h2>📚 Decks and Blogs</h2>
+				<ul>
+					<li><a href="https://www.datadoghq.com/ja/blog/datadog-live-tokyo-2025-recap/" target="_blank">Datadog Live Tokyo 2025 Fireside Chat「AI Agentで実現するAIOps – Bits AI SRE 国内活用事例 – 」開催レポート</a> - Datadog Blog (Feb 6, 2026)</li>
+					<li><a href="https://qiita.com/Taka2Noda/items/8a6aa17ee0d41b96a203" target="_blank">LangGraphで構築したAI エージェントをDatadogで監視する方法と見え方</a> - Qiita (Dec 4, 2025)</li>
+					<li><a href="https://qiita.com/Taka2Noda/items/44f38aefa9c87eab166c" target="_blank">Datadog LLM Observability を AWS Lambda(Python, Bedrock)に対して設定する</a> - Qiita (Jul 14, 2025)</li>
+					<li><a href="https://speakerdeck.com/taka2noda/ai-agent-observability-datadog-2025-ja" target="_blank">AI エージェントの実運用を支えるオブザーバビリティの実践</a> - Speaker Deck (2025)</li>
+					<li><a href="https://speakerdeck.com/taka2noda/datadogdeshi-xian-surusekiyuritei-obuzababiritei" target="_blank">Datadogで実現するセキュリティ オブザーバビリティ</a> - Security-JAWS 29th Study Session</li>
+					<li><a href="https://speakerdeck.com/taka2noda/phpdegou-zhu-sitawordpresswoobservabilityturudejian-temiru-phperkaigi-2023" target="_blank">PHPで構築したWordPressをObservabilityツールで見てみる</a> - PHPerKaigi 2023</li>
+					<li>Other > <a href="https://speakerdeck.com/taka2noda" target="_blank">Speakerdecks</a> / <a href="https://qiita.com/Taka2Noda" target="_blank">Qiita</a> / <a href="https://note.com/taka2noda" target="_blank">Note</a></li>
+				</ul>
+			</div>
+
+			<div id="speaking" class="tab-content">
+				<h2>🎤 Public Speaking</h2>
+				<ul>
+					<li><a href="https://www.event-site.info/datadog-live-tokyo-2025/" target="_blank">Datadog Live Tokyo 2025</a> - Fireside Chat: AI Agent で実現する AIOps ― Bits AI SRE 国内活用事例 ― (Dec 16, 2025)</li>
+					<li><a href="https://cloud.watch.impress.co.jp/docs/event/2045339.html" target="_blank">Cloud Operator Days Tokyo 2025</a> - AIエージェントの実運用を支えるオブザーバビリティの実践 🏆 Audience Award (Sep 5, 2025)</li>
+					<li><a href="https://www.datadoghq.com/ja/event/awsgenai/" target="_blank">DatadogでAWS生成AIスタックを監視する</a> - Datadog Webinar (Aug 7, 2024)</li>
+					<li><a href="https://jaguer.jp/collaborate_btw_securityo11y/" target="_blank">Jaguer Observability/SRE and Security Subcommittee Collaboration MeetUp</a> (Jun 22, 2023)</li>
+					<li><a href="https://s-jaws.doorkeeper.jp/events/155023" target="_blank">Security-JAWS 29th Study Session</a> (May 25, 2023)</li>
+					<li><a href="https://fortee.jp/phperkaigi-2023/proposal/f4d1dc93-718b-44c7-8be2-edd66a253e63" target="_blank">PHPerKaigi 2023</a> (Mar 24, 2023)</li>
+					<li><a href="https://jaguer.jp/observability-sre-%e5%88%86%e7%a7%91%e4%bc%9a-%e3%80%90%e7%ac%ac4%e5%9b%9e%e3%80%91meetup%e9%96%8b%e5%82%ac%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81/" target="_blank">Jaguer Observability/SRE Subcommittee 4th MeetUp</a> (Feb 2, 2023)</li>
+					<li><a href="https://enq.itmedia.co.jp/on24u/form/cnw2209?partnerref=cl#session3-4" target="_blank">ITmedia Cloud Native Week 2022 Autumn</a> (Sep 16, 2022)</li>
+					<li><a href="https://www.datadoghq.com/ja/dg/webinars/logs-webinar-ja/" target="_blank">Datadog Japan OnDemand Webinar</a> (Jul 28, 2022)</li>
+					<li><a href="https://www.ibm.com/events/sre/sessions/#SRE-092" target="_blank">SRE conference@IBM</a> (Nov 9, 2021)</li>
+				</ul>
+			</div>
+		</div>
 	</div>
-	
-	<h2>&#x1F468;&#x200D;&#x1F4BB; Job &#x1F468;&#x200D;&#x1F4BB;</h2>
-	<ul>
-		<li>Sales Engineer, Datadog (Feb 2022~)</li>
-		<li>ex. Platform SRE and Delivery Program Manager, Kyndryl & IBM (~Feb 2022)</li>
-	</ul>
-	
-	<h2>&#x1F310; Community &#x1F310;</h2>
-	<ul>
-		<li>Jaguer Observability/SRE Subcommittee Management(Oct 2022~)</li>
-		<li>ex. Kyndryl Slack Core Champion & IBM Slack Champion (~Feb 2022)</li>
-	</ul>
-	
-	<h2>&#x1F4DC; Certifications &#x1F4DC;</h2>
-	<ul>
-		<li>Project Management Professional (PMP)®</li>
-		<li>ITIL® Foundation Certificate in IT Service Management</li>
-		<li>Datadog All Certified</li>
-		<li>Other &gt; <a href="https://www.credly.com/users/tsunoda-takaaki/badges" target="_blank">credly</a> / <a href="https://google.accredible.com/profile/taka2" target="_blank">accredible</a> / <a href="https://badges.slackcertified.com/profile/takaakitsunoda835506/wallet" target="_blank">slack-certified</a></li>
-	</ul>
-	
-	<h2>&#x1F4DA; Decks and Blogs &#x1F4DA;</h2>
-	<ul>
-		<li><a href="https://speakerdeck.com/taka2noda/datadogdeshi-xian-surusekiyuritei-obuzababiritei" target="_blank">Datadogで実現するセキュリティ オブザーバビリティ</a> - Security-JAWS 29th Study Session</li>
-		<li><a href="https://speakerdeck.com/taka2noda/phpdegou-zhu-sitawordpresswoobservabilityturudejian-temiru-phperkaigi-2023" target="_blank">PHPで構築したWordPressをObservabilityツールで見てみる</a> - PHPerKaigi 2023</li>
-		<li>Other &gt; <a href="https://speakerdeck.com/taka2noda" target="_blank">Speakerdecks</a> / <a href="https://qiita.com/Taka2Noda" target="_blank">Qiita</a> / <a href="https://note.com/taka2noda" target="_blank">Note</a></li>
-	</ul>
-	
-	<h2>&#x1F3A4; Public Speaking &#x1F3A4;</h2>
-	<ul>
-		<li><a href="https://jaguer.jp/collaborate_btw_securityo11y/" target="_blank">Jaguer Observability/SRE and Security Subcommittee Collaboration MeetUp</a> (Jun 22, 2023)</li>
-		<li><a href="https://s-jaws.doorkeeper.jp/events/155023" target="_blank">Security-JAWS 29th Study Session</a> (May 25, 2023)</li>
-		<li><a href="https://fortee.jp/phperkaigi-2023/proposal/f4d1dc93-718b-44c7-8be2-edd66a253e63" target="_blank">PHPerKaigi 2023</a> (Mar 24, 2023)</li>
-		<li><a href="https://jaguer.jp/observability-sre-%e5%88%86%e7%a7%91%e4%bc%9a-%e3%80%90%e7%ac%ac4%e5%9b%9e%e3%80%91meetup%e9%96%8b%e5%82%ac%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81/" target="_blank">Jaguer Observability/SRE Subcommittee 4th MeetUp</a> (Feb 2, 2023)</li>
-		<li><a href="https://enq.itmedia.co.jp/on24u/form/cnw2209?partnerref=cl#session3-4" target="_blank">ITmedia Cloud Native Week 2022 Autumn</a> (Sep 16, 2022)</li>
-		<li><a href="https://www.datadoghq.com/ja/dg/webinars/logs-webinar-ja/" target="_blank">Datadog Japan OnDemand Webinar</a> (Jul 28, 2022)</li>
-		<li><a href="https://www.ibm.com/events/sre/sessions/#SRE-092" target="_blank">SRE conference@IBM</a> (Nov 9, 2021)</li>
-	</ul>
-	
-	<h2>&#x1F4E7; Contact &#x1F4E7;</h2>
-	<ul class="contact-icons">
-		<a href="https://www.linkedin.com/in/takaaki-tsunoda/" target="_blank"><i class="fab fa-linkedin"></i></a>
-		<a href="https://twitter.com/taka2noda" target="_blank"><i class="fab fa-twitter"></i></a>
-		<a href="https://github.com/taka2noda" target="_blank"><i class="fab fa-github"></i></a>
-	</ul>
- 
+
+	<script>
+		function openTab(evt, tabName) {
+			var i, tabcontent, tabbuttons;
+
+			tabcontent = document.getElementsByClassName("tab-content");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].classList.remove("active");
+			}
+
+			tabbuttons = document.getElementsByClassName("tab-button");
+			for (i = 0; i < tabbuttons.length; i++) {
+				tabbuttons[i].classList.remove("active");
+			}
+
+			document.getElementById(tabName).classList.add("active");
+			evt.currentTarget.classList.add("active");
+		}
+	</script>
 </body>
 
 </html>
