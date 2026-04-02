@@ -433,11 +433,11 @@ window.DD_RUM.onReady(function() {
 
       <!-- FAQ -->
       <table>
-        <tr><td class="section-header">よ く あ る 質 問</td></tr>
+        <tr><td class="section-header">想 定 質 問</td></tr>
         <tr>
           <td style="padding:8px;">
             <div style="display:flex; gap:6px; align-items:center;">
-              <select id="faq-select" style="flex:1; font-size:11px; padding:4px 6px; border:1px solid #BFBAB0; background:#fff; color:var(--dd-ink); font-family:inherit;">
+              <select id="faq-select" onchange="showFaqAnswer()" style="flex:1; font-size:11px; padding:4px 6px; border:1px solid #BFBAB0; background:#fff; color:var(--dd-ink); font-family:inherit;">
                 <option value="">-- 質問を選択してください --</option>
                 <option value="q1">Q1 何ができるの？</option>
                 <option value="q2">Q2 そんなこと本当にできるの？</option>
@@ -452,7 +452,6 @@ window.DD_RUM.onReady(function() {
                 <option value="q11">Q11 夜間休日も任せていい？</option>
                 <option value="q12">Q12 コストは...？</option>
               </select>
-              <button onclick="showFaqAnswer()" style="padding:4px 10px; background:var(--dd-purple); color:#fff; border:none; font-size:11px; font-family:inherit; cursor:pointer; white-space:nowrap;">回答を見る</button>
             </div>
             <div id="faq-answer" style="display:none; margin-top:8px; padding:7px 10px; background:#F0EDE6; border-left:3px solid var(--dd-purple); font-size:11px; line-height:1.7; color:var(--dd-ink);"></div>
           </td>
@@ -462,17 +461,17 @@ window.DD_RUM.onReady(function() {
       <script>
         var faqData = {
           q1:  '複数のデータを自律的に解析し、約10分で原因・影響・示唆を提示します',
-          q2:  '2025年1月だけで、2000社、10万件以上の調査実績があります\nデモと事例でご紹介します',
+          q2:  'はい　2025年1月だけで、2000社、10万件以上の調査実績があります\nデモと事例でご紹介します',
           q3:  'Datadogを利用中の場合、ワンクリックで有効化できます\nただし、最大限活用するためにはデータの集約やタグ設計が重要となります',
           q4:  '調査手順を設定いただければ、それに従った調査も行います',
-          q5:  '調査結果の出力も対話も日本語で可能です',
-          q6:  'Previewステータスですが、Confluence・ServiceNow等に対応します',
-          q7:  'アラート通知のスレッドに調査結果も自動で投稿します',
-          q8:  '日本語でチャット形式で対話しながら深掘りできます',
-          q9:  '各ステップ毎に調査内容と根拠となる実データを確認可能です',
-          q10: 'インシデントチケットとして保存可能で、アカウントがある限り保持します',
-          q11: '24時間365日、対応します',
-          q12: '実行回数課金となります　無料トライアルも可能です'
+          q5:  'はい　調査結果の出力も対話も日本語で可能です',
+          q6:  'はい　Previewステータスですが、Confluence・ServiceNow等のデータも参照可能です',
+          q7:  'はい　アラート通知のスレッドに調査結果も自動で投稿します',
+          q8:  'はい　日本語でチャット形式で対話しながら深掘りできます',
+          q9:  'はい　各ステップ毎に調査内容と根拠となる実データを確認可能です',
+          q10: 'はい　インシデントチケットとして保存可能で、アカウントがある限り保持します',
+          q11: 'はい　24時間365日、対応します',
+          q12: '実行回数課金となります 20回当たり$500から$625(AP1)です\n詳細は価格ページを参照ください 無料トライアルも可能です'
         };
         function showFaqAnswer() {
           var key = document.getElementById('faq-select').value;
