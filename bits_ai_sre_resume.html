@@ -431,6 +431,58 @@ window.DD_RUM.onReady(function() {
         </tr>
       </table>
 
+      <!-- FAQ -->
+      <table>
+        <tr><td class="section-header">よ く あ る 質 問</td></tr>
+        <tr>
+          <td style="padding:8px;">
+            <div style="display:flex; gap:6px; align-items:center;">
+              <select id="faq-select" style="flex:1; font-size:11px; padding:4px 6px; border:1px solid #BFBAB0; background:#fff; color:var(--dd-ink); font-family:inherit;">
+                <option value="">-- 質問を選択してください --</option>
+                <option value="q1">Q1 何ができるの？</option>
+                <option value="q2">Q2 そんなこと本当にできるの？</option>
+                <option value="q3">Q3 始めるのに準備は必要？</option>
+                <option value="q4">Q4 うちには独自の調査手順があるけど？</option>
+                <option value="q5">Q5 日本語も大丈夫？</option>
+                <option value="q6">Q6 Datadog外のデータも参照可能？</option>
+                <option value="q7">Q7 Slack/MS Teamsの通知と合わせられる？</option>
+                <option value="q8">Q8 質問には答えてくれる？</option>
+                <option value="q9">Q9 調査が正しいか確認したい場合は？</option>
+                <option value="q10">Q10 調査結果をレポート化できる？</option>
+                <option value="q11">Q11 夜間休日も任せていい？</option>
+                <option value="q12">Q12 コストは...？</option>
+              </select>
+              <button onclick="showFaqAnswer()" style="padding:4px 10px; background:var(--dd-purple); color:#fff; border:none; font-size:11px; font-family:inherit; cursor:pointer; white-space:nowrap;">回答を見る</button>
+            </div>
+            <div id="faq-answer" style="display:none; margin-top:8px; padding:7px 10px; background:#F0EDE6; border-left:3px solid var(--dd-purple); font-size:11px; line-height:1.7; color:var(--dd-ink);"></div>
+          </td>
+        </tr>
+      </table>
+
+      <script>
+        var faqData = {
+          q1:  '複数のデータを自律的に解析し、約10分で原因・影響・示唆を提示します',
+          q2:  '2025年1月だけで、2000社、10万件以上の調査実績があります\nデモと事例でご紹介します',
+          q3:  'Datadogを利用中の場合、ワンクリックで有効化できます\nただし、最大限活用するためにはデータの集約やタグ設計が重要となります',
+          q4:  '調査手順を設定いただければ、それに従った調査も行います',
+          q5:  '調査結果の出力も対話も日本語で可能です',
+          q6:  'Previewステータスですが、Confluence・ServiceNow等に対応します',
+          q7:  'アラート通知のスレッドに調査結果も自動で投稿します',
+          q8:  '日本語でチャット形式で対話しながら深掘りできます',
+          q9:  '各ステップ毎に調査内容と根拠となる実データを確認可能です',
+          q10: 'インシデントチケットとして保存可能で、アカウントがある限り保持します',
+          q11: '24時間365日、対応します',
+          q12: '実行回数課金となります　無料トライアルも可能です'
+        };
+        function showFaqAnswer() {
+          var key = document.getElementById('faq-select').value;
+          var box = document.getElementById('faq-answer');
+          if (!key) { box.style.display = 'none'; return; }
+          box.innerHTML = faqData[key].replace(/\n/g, '<br>');
+          box.style.display = 'block';
+        }
+      </script>
+
     </div>
 
   </div>
