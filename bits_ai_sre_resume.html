@@ -112,27 +112,25 @@
 
   /* === WATERMARK === */
   .watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-30deg);
+    display: inline-block;
+    transform: rotate(-20deg);
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 96px;
-    font-weight: 900;
-    letter-spacing: 8px;
-    color: rgba(0,0,0,0.045);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(0,0,0,0.25);
     white-space: nowrap;
-    pointer-events: none;
-    z-index: 2;
     user-select: none;
-    line-height: 1.3;
+    line-height: 1.4;
     text-align: center;
+    margin-left: 12px;
+    vertical-align: middle;
   }
 
   /* === TITLE === */
   .title-row {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
     border-bottom: 2px solid var(--dd-ink);
@@ -249,13 +247,15 @@
 </head>
 <body>
 <div class="page">
-<div class="watermark">DRAFT<br>UNOFFICIAL</div>
 <div class="content">
 
   <!-- Title -->
   <div class="title-row">
     <h1>履 歴 書</h1>
-    <span class="title-date">2026年 4月 2日現在</span>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span class="watermark">DRAFT<br>UNOFFICIAL</span>
+      <span class="title-date">2026年 4月 2日現在</span>
+    </div>
   </div>
 
   <div class="main-columns">
