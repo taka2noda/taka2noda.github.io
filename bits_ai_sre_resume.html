@@ -474,9 +474,12 @@ window.DD_RUM.onReady(function() {
           q12: '実行回数課金となります 20回当たり$500から$625(AP1)です\n詳細は価格ページを参照ください 無料トライアルも可能です'
         };
         function showFaqAnswer() {
-          var key = document.getElementById('faq-select').value;
+          var sel = document.getElementById('faq-select');
+          var key = sel.value;
           var box = document.getElementById('faq-answer');
           if (!key) { box.style.display = 'none'; return; }
+          var questionText = sel.options[sel.selectedIndex].text;
+          window.DD_RUM && window.DD_RUM.addAction(questionText, { question_key: key });
           box.innerHTML = faqData[key].replace(/\n/g, '<br>');
           box.style.display = 'block';
         }
