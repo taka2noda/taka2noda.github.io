@@ -411,7 +411,7 @@ window.DD_RUM.onReady(function() {
         <tr><td class="section-header">志望の動機、特技、アピールポイント</td></tr>
         <tr>
           <td>
-            アラート発報と同時に調査を開始し、約10分で根本原因を特定する<span class="highlight">「24/365 AI オンコールエンジニア」</span>です。<br>
+            アラート発報と同時に調査を開始し、数分で根本原因を特定する<span class="highlight">「24/365 AI オンコールエンジニア」</span>です。<br>
             2,000以上の顧客・月あたり10万件以上の調査実績があり、MTTRを<span class="highlight">最大90%短縮</span>します。<br>
             現在はHuman in the Loopの設計でアクション実行にはエンジニアの承認が必要ですが、将来的には自律的な実行と運用の実現を目指しています。
           </td>
@@ -431,63 +431,68 @@ window.DD_RUM.onReady(function() {
         </tr>
       </table>
 
-      <!-- FAQ -->
-      <table>
-        <tr><td class="section-header">想 定 質 問</td></tr>
-        <tr>
-          <td style="padding:8px;">
-            <div style="display:flex; gap:6px; align-items:center;">
-              <select id="faq-select" onchange="showFaqAnswer()" style="flex:1; font-size:11px; padding:4px 6px; border:1px solid #BFBAB0; background:#fff; color:var(--dd-ink); font-family:inherit;">
-                <option value="">-- 質問を選択してください --</option>
-                <option value="q1">Q1 何ができるの？</option>
-                <option value="q2">Q2 そんなこと本当にできるの？</option>
-                <option value="q3">Q3 始めるのに準備は必要？</option>
-                <option value="q4">Q4 うちには独自の調査手順があるけど？</option>
-                <option value="q5">Q5 日本語も大丈夫？</option>
-                <option value="q6">Q6 Datadog外のデータも参照可能？</option>
-                <option value="q7">Q7 Slack/MS Teamsの通知と合わせられる？</option>
-                <option value="q8">Q8 質問には答えてくれる？</option>
-                <option value="q9">Q9 調査が正しいか確認したい場合は？</option>
-                <option value="q10">Q10 調査結果をレポート化できる？</option>
-                <option value="q11">Q11 夜間休日も任せていい？</option>
-                <option value="q12">Q12 コストは...？</option>
-              </select>
+      <!-- FAQ: Chat with Bits UI -->
+      <div style="margin-top:12px;">
+        <div style="border:1.5px solid #D0C8E8; border-radius:16px; padding:12px 14px 10px; background:#fff;">
+          <select id="faq-select" onchange="selectFaqQuestion()" style="width:100%; font-size:11px; padding:4px 8px; border:1px solid #D0C8E8; background:#f7f5fc; color:var(--dd-ink); font-family:inherit; border-radius:8px; margin-bottom:10px;">
+            <option value="">Chat with Bits...</option>
+            <option value="q1">Q1 何ができるの？</option>
+            <option value="q2">Q2 そんなこと本当にできるの？</option>
+            <option value="q3">Q3 始めるのに準備は必要？</option>
+            <option value="q4">Q4 うちには独自の調査手順があるけど？</option>
+            <option value="q5">Q5 日本語も大丈夫？</option>
+            <option value="q6">Q6 Datadog外のデータも参照可能？</option>
+            <option value="q7">Q7 Slack/MS Teamsの通知と合わせられる？</option>
+            <option value="q8">Q8 質問には答えてくれる？</option>
+            <option value="q9">Q9 調査が正しいか確認したい場合は？</option>
+            <option value="q10">Q10 調査結果をレポート化できる？</option>
+            <option value="q11">Q11 夜間休日も任せていい？</option>
+            <option value="q12">Q12 コストは...？</option>
+          </select>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+            <img src="images/bits-chatbot_avatar.svg" alt="Bits" style="width:22px; height:22px; flex-shrink:0; opacity:0.5;">
+            <div id="faq-answer" style="flex:1; font-size:11px; line-height:1.7; color:#aaa; min-height:22px;"></div>
+            <div onclick="showFaqAnswer()" style="width:28px; height:28px; flex-shrink:0; background:#C4B5E8; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div id="faq-answer" style="display:none; margin-top:8px; padding:7px 10px; background:#F0EDE6; border-left:3px solid var(--dd-purple); font-size:11px; line-height:1.7; color:var(--dd-ink);"></div>
-          </td>
-        </tr>
-      </table>
-
-      <script>
-        var faqData = {
-          q1:  '複数のデータを自律的に解析し、約10分で原因・影響・示唆を提示します',
-          q2:  'はい　2025年1月だけで、2000社、10万件以上の調査実績があります\nデモと事例でご紹介します',
-          q3:  'Datadogを利用中の場合、ワンクリックで有効化できます\nただし、最大限活用するためにはデータの集約やタグ設計が重要となります',
-          q4:  '調査手順を設定いただければ、それに従った調査も行います',
-          q5:  'はい　調査結果の出力も対話も日本語で可能です',
-          q6:  'はい　Previewステータスですが、Confluence・ServiceNow等のデータも参照可能です',
-          q7:  'はい　アラート通知のスレッドに調査結果も自動で投稿します',
-          q8:  'はい　日本語でチャット形式で対話しながら深掘りできます',
-          q9:  'はい　各ステップ毎に調査内容と根拠となる実データを確認可能です',
-          q10: 'はい　インシデントチケットとして保存可能で、アカウントがある限り保持します',
-          q11: 'はい　24時間365日、対応します',
-          q12: '実行回数課金となります 20回当たり$500から$625(AP1)です\n詳細は価格ページを参照ください 無料トライアルも可能です'
-        };
-        function showFaqAnswer() {
-          var sel = document.getElementById('faq-select');
-          var key = sel.value;
-          var box = document.getElementById('faq-answer');
-          if (!key) { box.style.display = 'none'; return; }
-          var questionText = sel.options[sel.selectedIndex].text;
-          window.DD_RUM && window.DD_RUM.addAction(questionText, { question_key: key });
-          box.innerHTML = faqData[key].replace(/\n/g, '<br>');
-          box.style.display = 'block';
-        }
-      </script>
+          </div>
+        </div>
+      </div>
 
     </div>
 
   </div>
+
+
+  <script>
+    var faqData = {
+      q1:  '複数のデータを自律的に解析し、数分で原因・影響・示唆を提示します',
+      q2:  'はい　直近1ヶ月だけでも、2000社、10万件以上の調査実績があります\nデモと事例でご紹介します',
+      q3:  'Datadogを利用中の場合、ワンクリックで有効化できます\nただし、最大限活用するためにはデータの集約やタグ設計が重要となります',
+      q4:  '調査手順を設定いただければ、それに従った調査も行います',
+      q5:  'はい　調査結果の出力も対話も日本語で可能です',
+      q6:  'はい　Previewステータスですが、Confluence・ServiceNow等のデータも参照可能です',
+      q7:  'はい　アラート通知のスレッドに調査結果も自動で投稿します',
+      q8:  'はい　日本語でチャット形式で対話しながら深掘りできます',
+      q9:  'はい　各ステップ毎に調査内容と根拠となる実データを確認可能です',
+      q10: 'はい　インシデントチケットとして保存可能で、アカウントがある限り保持します',
+      q11: 'はい　24時間365日、対応します',
+      q12: '調査が完了した実行回数課金となります\n詳細は価格ページを参照ください　無料トライアルも可能です'
+    };
+    function selectFaqQuestion() {
+      showFaqAnswer();
+    }
+    function showFaqAnswer() {
+      var sel = document.getElementById('faq-select');
+      var key = sel.value;
+      var box = document.getElementById('faq-answer');
+      if (!key) return;
+      var questionText = sel.options[sel.selectedIndex].text;
+      window.DD_RUM && window.DD_RUM.addAction(questionText, { question_key: key });
+      box.innerHTML = faqData[key].replace(/\n/g, '<br>');
+      box.style.color = 'var(--dd-ink)';
+    }
+  </script>
 
 <div class="footer-note" style="line-height:1.8;">
     ⚠️ 本ページは現在ドラフト段階です。内容は予告なく変更される場合があります。<br>
