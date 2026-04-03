@@ -433,7 +433,7 @@ window.DD_RUM.onReady(function() {
       </table>
 
       <!-- FAQ: Chat with Bits UI -->
-      <div id="faq-chat-section" style="margin-top:12px;">
+      <div id="faq-chat-section" style="margin-top:12px; display:none;">
         <div style="border:1.5px solid #D0C8E8; border-radius:16px; padding:12px 14px 10px; background:#fff;">
           <select id="faq-select" onchange="selectFaqQuestion()" style="width:100%; font-size:11px; padding:4px 8px; border:1px solid #D0C8E8; background:#f7f5fc; color:var(--dd-ink); font-family:inherit; border-radius:8px; margin-bottom:10px;">
             <option value="">Chat with Bits...?</option>
@@ -498,9 +498,9 @@ window.DD_RUM.onReady(function() {
         const client = OpenFeature.getClient();
         const showFaqChat = client.getBooleanValue('faq_chat_bits', false);
 
-        if (!showFaqChat) {
+        if (showFaqChat) {
           var section = document.getElementById('faq-chat-section');
-          if (section) section.style.display = 'none';
+          if (section) section.style.display = 'block';
         }
       } catch (e) {
         console.warn('Feature flag evaluation failed, showing FAQ by default.', e);
