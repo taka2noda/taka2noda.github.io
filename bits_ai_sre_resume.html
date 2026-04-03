@@ -496,7 +496,7 @@ window.DD_RUM.onReady(function() {
         await OpenFeature.setProviderAndWait(provider, { targetingKey: 'anonymous' });
 
         const client = OpenFeature.getClient();
-        const showFaqChat = client.getBooleanValue('show_faq_chat', true);
+        const showFaqChat = client.getBooleanValue('faq_chat_bits', false);
 
         if (!showFaqChat) {
           var section = document.getElementById('faq-chat-section');
