@@ -480,17 +480,30 @@ window.DD_RUM.onReady(function() {
       q11: 'はい　24時間365日、対応します',
       q12: '調査が完了した実行回数課金となります\n詳細は価格ページを参照ください　無料トライアルも可能です'
     };
-    // Feature Flag: show_faq_chat
-    // URLパラメータ ?show_chat=true/false で制御。未指定時はtrue（表示）
-    (function() {
-      var params = new URLSearchParams(window.location.search);
-      var flagValue = params.has('show_chat') ? params.get('show_chat') !== 'false' : true;
-      window.DD_RUM && window.DD_RUM.onReady(function() {
-        window.DD_RUM.addFeatureFlagEvaluation('show_faq_chat', flagValue);
-      });
-      if (!flagValue) {
-        var section = document.getElementById('faq-chat-section');
-        if (section) section.style.display = 'none';
+    // Feature Flag: show_faq_chat (Datadog Feature Management / OpenFeature)
+    (async function() {
+      try {
+        const { DatadogProvider } = await import('https://cdn.jsdelivr.net/npm/@datadog/openfeature-browser@latest/+esm');
+        const { OpenFeature } = await import('https://cdn.jsdelivr.net/npm/@openfeature/web-sdk@latest/+esm');
+
+        const provider = new DatadogProvider({
+          applicationId: 'a36211d4-882c-449c-b884-bff3fcb64d7d',
+          clientToken: 'pub01ada00bc2e35b64ac26b2697b32a8b3',
+          site: 'datadoghq.com',
+          env: 'prod',
+        });
+
+        await OpenFeature.setProviderAndWait(provider, { targetingKey: 'anonymous' });
+
+        const client = OpenFeature.getClient();
+        const showFaqChat = client.getBooleanValue('show_faq_chat', true);
+
+        if (!showFaqChat) {
+          var section = document.getElementById('faq-chat-section');
+          if (section) section.style.display = 'none';
+        }
+      } catch (e) {
+        console.warn('Feature flag evaluation failed, showing FAQ by default.', e);
       }
     })();
 
