@@ -274,6 +274,10 @@ window.DD_RUM.onReady(function() {
     th, td { padding: 4px 6px; }
   }
 
+  @media (max-width: 900px) {
+    #qr-code { display: none; }
+  }
+
   @media (max-width: 480px) {
     .title-row { flex-wrap: wrap; gap: 6px; }
     .title-row h1 { font-size: 18px; letter-spacing: 4px; }
@@ -566,8 +570,8 @@ window.DD_RUM.onReady(function() {
     ※ 本ページは <a href="https://github.com/taka2noda" target="_blank" style="color:#999;">taka2noda</a> が個人的に作成したものです。正確性に注意して作成していますが、Datadog公式のコンテンツではありません。最新・正確な情報は <a href="https://docs.datadoghq.com/bits_ai/bits_ai_sre" target="_blank" style="color:#999;">Datadog公式ドキュメント</a> をご参照ください。
   </div>
 
-  <!-- QR Code: 画面左下に固定 -->
-  <img src="images/Qq437X1X3kGKNrf_Untitled 2026-04-03.png" alt="QR Code"
+  <!-- QR Code: 画面左下に固定（モバイルでは非表示） -->
+  <img src="images/Qq437X1X3kGKNrf_Untitled 2026-04-03.png" alt="QR Code" id="qr-code"
     style="position:fixed; bottom:16px; left:96px; width:110px; height:110px; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.15); border-radius:6px; background:#fff;">
 
 </div>
