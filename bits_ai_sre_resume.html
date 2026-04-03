@@ -266,6 +266,21 @@ window.DD_RUM.onReady(function() {
     .page { padding: 16px 12px; }
     .main-columns { grid-template-columns: 1fr; }
     .identity-grid { grid-template-columns: 1fr; }
+    .title-row h1 { font-size: 20px; letter-spacing: 6px; }
+    .title-date { font-size: 11px; }
+    .watermark { font-size: 9px; }
+    .name-main { font-size: 16px; letter-spacing: 2px; }
+    table { font-size: 11px; }
+    th, td { padding: 4px 6px; }
+  }
+
+  @media (max-width: 480px) {
+    .title-row { flex-wrap: wrap; gap: 6px; }
+    .title-row h1 { font-size: 18px; letter-spacing: 4px; }
+    .title-date { font-size: 10px; }
+    .watermark { display: none; }
+    .section-header { font-size: 10px; letter-spacing: 2px; }
+    table { font-size: 10px; }
   }
 </style>
 </head>
