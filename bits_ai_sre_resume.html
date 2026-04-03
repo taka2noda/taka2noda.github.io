@@ -480,12 +480,32 @@ window.DD_RUM.onReady(function() {
       q11: 'はい　24時間365日、対応します',
       q12: '調査が完了した実行回数課金となります\n詳細は価格ページを参照ください　無料トライアルも可能です'
     };
-    // Feature Flag: show_faq_chat (Datadog Feature Management / OpenFeature)
+    /**
+     * Feature Flag 設定 (Datadog Feature Management / OpenFeature)
+     *
+     * 概要:
+     *   Datadog Feature Management を使って「想定質問チャット欄」の表示/非表示を制御します。
+     *   フラグの評価結果は Datadog RUM にも送信され、セッションと紐付けて分析できます。
+     *
+     * フラグ名: faq_chat_bits
+     *   - true  → チャット欄を表示
+     *   - false → チャット欄を非表示（デフォルト）
+     *
+     * フラグの切り替え方法:
+     *   Datadog UI → Software Delivery → Feature Management → faq_chat_bits
+     *   Default Rule を true/false に変更して Save するとリアルタイムで反映されます。
+     *
+     * 依存ライブラリ (CDN経由):
+     *   - @datadog/openfeature-browser : Datadog Feature Management の OpenFeature プロバイダー
+     *   - @openfeature/web-sdk         : OpenFeature 標準 SDK（フラグ評価クライアント）
+     */
     (async function() {
       try {
+        // Datadog Feature Management プロバイダーと OpenFeature SDK を動的ロード
         const { DatadogProvider } = await import('https://cdn.jsdelivr.net/npm/@datadog/openfeature-browser@latest/+esm');
         const { OpenFeature } = await import('https://cdn.jsdelivr.net/npm/@openfeature/web-sdk@latest/+esm');
 
+        // RUM と同じ認証情報で Datadog Feature Management に接続
         const provider = new DatadogProvider({
           applicationId: 'a36211d4-882c-449c-b884-bff3fcb64d7d',
           clientToken: 'pub01ada00bc2e35b64ac26b2697b32a8b3',
@@ -493,8 +513,10 @@ window.DD_RUM.onReady(function() {
           env: 'prod',
         });
 
+        // 評価コンテキスト: targetingKey はパーセンテージ配信の対象識別子
         await OpenFeature.setProviderAndWait(provider, { targetingKey: 'anonymous' });
 
+        // faq_chat_bits フラグを評価（未設定・エラー時のデフォルトは false = 非表示）
         const client = OpenFeature.getClient();
         const showFaqChat = client.getBooleanValue('faq_chat_bits', false);
 
@@ -503,7 +525,8 @@ window.DD_RUM.onReady(function() {
           if (section) section.style.display = 'block';
         }
       } catch (e) {
-        console.warn('Feature flag evaluation failed, showing FAQ by default.', e);
+        // フラグ取得失敗時はデフォルト（非表示）のまま継続
+        console.warn('Feature flag evaluation failed, FAQ chat remains hidden.', e);
       }
     })();
 
