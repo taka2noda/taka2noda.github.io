@@ -13,10 +13,10 @@
 
 window.DD_RUM.onReady(function() {
   window.DD_RUM && window.DD_RUM.init({
-    applicationId: 'a36211d4-882c-449c-b884-bff3fcb64d7d',
-    clientToken: 'pub01ada00bc2e35b64ac26b2697b32a8b3',
-    site: 'datadoghq.com',
-    service: 'bits-ai-resume',
+    applicationId: '745e25e9-05e3-4ea1-8582-94f606c081cc',
+    clientToken: 'pubc623474570f30924081ad3d537c96984',
+    site: 'ap1.datadoghq.com',
+    service: 'bits-ai-resume-ap1',
     env: 'prod',
     version: '1.0.0',
     sessionSampleRate: 100,
@@ -526,18 +526,18 @@ window.DD_RUM.onReady(function() {
 
         // RUM と同じ認証情報で Datadog Feature Management に接続
         const provider = new DatadogProvider({
-          applicationId: 'a36211d4-882c-449c-b884-bff3fcb64d7d',
-          clientToken: 'pub01ada00bc2e35b64ac26b2697b32a8b3',
-          site: 'datadoghq.com',
+          applicationId: '745e25e9-05e3-4ea1-8582-94f606c081cc',
+          clientToken: 'pubc623474570f30924081ad3d537c96984',
+          site: 'ap1.datadoghq.com',
           env: 'prod',
         });
 
         // 評価コンテキスト: targetingKey はパーセンテージ配信の対象識別子
         await OpenFeature.setProviderAndWait(provider, { targetingKey: 'anonymous' });
 
-        // faq_chat_bits フラグを評価（未設定・エラー時のデフォルトは false = 非表示）
+        // faq-chat-ap1 フラグを評価（未設定・エラー時のデフォルトは false = 非表示）
         const client = OpenFeature.getClient();
-        const showFaqChat = client.getBooleanValue('faq_chat_bits', false);
+        const showFaqChat = client.getBooleanValue('faq-chat-ap1', false);
 
         if (showFaqChat) {
           var section = document.getElementById('faq-chat-section');
