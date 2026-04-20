@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>履歴書 - Bits AI SRE（印刷用）</title>
+<script>
+(function(h,o,u,n,d) {
+  h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+  d=o.createElement(u);d.async=1;d.src=n
+  n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+})(window,document,'script','https://www.datadoghq-browser-agent.com/us1/v6/datadog-rum.js','DD_RUM')
+
+window.DD_RUM.onReady(function() {
+  window.DD_RUM && window.DD_RUM.init({
+    applicationId: '745e25e9-05e3-4ea1-8582-94f606c081cc',
+    clientToken: 'pubc623474570f30924081ad3d537c96984',
+    site: 'ap1.datadoghq.com',
+    service: 'bits-ai-resume-ap1',
+    env: 'prod',
+    version: '1.0.0',
+    sessionSampleRate: 100,
+    sessionReplaySampleRate: 100,
+    trackUserInteractions: true,
+    trackResources: true,
+    trackLongTasks: true,
+    enableExperimentalFeatures: ['feature_flags'],
+  });
+});
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=M+PLUS+1p:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dd-purple: #632CA6;
+    --dd-purple-dark: #4A1D80;
+    --dd-violet: #8B5CF6;
+    --dd-green: #3ECF8E;
+    --dd-green-dark: #2BA872;
+    --dd-orange: #FF7043;
+    --dd-bg: #FDFBF7;
+    --dd-ink: #1A1A2E;
+    --dd-ink-light: #4A4A5A;
+    --dd-cell-bg: #FFFFFF;
+    --dd-header-bg: #F0EDE6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #E8E4DD;
+    font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
+    color: var(--dd-ink);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+
+  .page {
+    width: 297mm;
+    height: 210mm;
+    background: var(--dd-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
+    padding: 20px 28px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--dd-purple), var(--dd-violet), var(--dd-green));
+  }
+
+  .page::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* === MAIN TWO-COLUMN === */
+  .main-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* === TABLES === */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+
+  th, td {
+    border: 1px solid #BFBAB0;
+    padding: 5px 8px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  th {
+    background: var(--dd-header-bg);
+    font-weight: 500;
+    font-size: 10.5px;
+    color: var(--dd-ink-light);
+    white-space: nowrap;
+    width: 1%;
+  }
+
+  td { background: var(--dd-cell-bg); }
+
+  .section-header {
+    background: var(--dd-ink);
+    color: #fff;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 5px 8px;
+  }
+
+  /* === WATERMARK === */
+  .watermark {
+    display: inline-block;
+    transform: rotate(-20deg);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(0,0,0,0.25);
+    white-space: nowrap;
+    user-select: none;
+    line-height: 1.4;
+    text-align: center;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+
+  /* === TITLE === */
+  .title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--dd-ink);
+    padding-bottom: 10px;
+  }
+
+  .title-row h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 12px;
+    color: var(--dd-ink);
+  }
+
+  .title-date {
+    font-size: 12px;
+    color: var(--dd-ink-light);
+    white-space: nowrap;
+  }
+
+  /* === Identity === */
+  .identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 0;
+    margin-bottom: 12px;
+  }
+
+  .identity-left table { margin-bottom: 0; }
+
+  .photo-cell {
+    border: 1px solid #BFBAB0;
+    background: var(--dd-cell-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .name-furigana { font-size: 9px; color: var(--dd-ink-light); letter-spacing: 2px; }
+
+  .name-main {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--dd-purple-dark);
+  }
+
+  .name-sub { font-size: 10px; color: var(--dd-ink-light); margin-top: 2px; }
+  .dob-row td { font-size: 11px; }
+
+  /* === Badges === */
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-right: 3px;
+    margin-bottom: 2px;
+  }
+
+  .badge-purple { background: var(--dd-purple); color: #fff; }
+  .badge-green { background: var(--dd-green-dark); color: #fff; }
+  .badge-orange { background: var(--dd-orange); color: #fff; }
+  .badge-gray { background: #6B7280; color: #fff; }
+
+  /* Timeline */
+  .timeline-entry {
+    position: relative;
+    padding-left: 12px;
+    margin-bottom: 2px;
+    line-height: 1.6;
+  }
+
+  .timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 7px;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--dd-purple);
+  }
+
+  .timeline-entry.green::before { background: var(--dd-green); }
+  .timeline-entry.orange::before { background: var(--dd-orange); }
+
+  /* Year/month */
+  .ym-cell { font-size: 10px; text-align: center; color: var(--dd-ink-light); width: 0; white-space: nowrap; padding: 5px 2px; }
+  th.ym-cell { width: 0; min-width: 0; }
+
+  /* Motivation */
+  .motivation-box td { line-height: 1.7; font-size: 12px; }
+  .highlight { color: var(--dd-purple-dark); font-weight: 700; }
+
+  /* Footer */
+  .footer-note { font-size: 9px; color: #999; text-align: right; margin-top: 8px; letter-spacing: 0.5px; }
+
+  /* Print */
+  @media print {
+    body {
+      background: #fff;
+      padding: 0;
+      margin: 0;
+      display: block;
+      min-height: unset;
+    }
+    .page {
+      box-shadow: none;
+      width: 297mm;
+      height: 210mm;
+      padding: 8mm 10mm;
+    }
+    .page::before, .page::after { display: none; }
+    @page { size: A4 landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="content">
+
+  <!-- Title -->
+  <div class="title-row" style="min-height:96px; align-items:flex-end;">
+    <h1>履 歴 書</h1>
+  </div>
+
+  <div class="main-columns">
+
+    <!-- ===== LEFT COLUMN ===== -->
+    <div>
+
+      <!-- Identity -->
+      <div class="identity-grid">
+        <div class="identity-left">
+          <table>
+            <tr>
+              <th style="width:52px;">ふりがな</th>
+              <td colspan="3"><span class="name-furigana">びっつ えーあい えすあーるいー</span></td>
+            </tr>
+            <tr>
+              <th>氏 名</th>
+              <td colspan="3">
+                <span class="name-main">Bits AI SRE</span>
+              </td>
+            </tr>
+            <tr class="dob-row">
+              <th>誕生日</th>
+              <td>2025年 12月 2日 正式リリース</td>
+              <th>種別</th>
+              <td>AI Agent</td>
+            </tr>
+            <tr>
+              <th>ふりがな</th>
+              <td colspan="3" style="font-size:9px; color:#1A1A2E;">でーたどっぐ</td>
+            </tr>
+            <tr>
+              <th>現住所</th>
+              <td colspan="3">Datadog — SaaSオブザーバビリティ＆セキュリティプラットフォーム</td>
+            </tr>
+          </table>
+        </div>
+        <div class="photo-cell">
+          <img src="images/bits-chatbot_avatar.svg" alt="Bits AI" style="width:80px; height:80px; object-fit:contain; padding:8px;">
+        </div>
+      </div>
+
+      <!-- Career History -->
+      <table style="table-layout:fixed">
+        <colgroup>
+          <col style="width:7%">
+          <col style="width:4%">
+          <col style="width:89%">
+        </colgroup>
+        <tr><td colspan="3" class="section-header">学 歴 ・ 職 歴</td></tr>
+        <tr>
+          <th class="ym-cell">年</th>
+          <th class="ym-cell">月</th>
+          <th>学歴・職歴（各別にまとめて書く）</th>
+        </tr>
+        <tr><td colspan="3" style="text-align:center; font-size:10px; color:#999; padding:3px;">【学 歴】</td></tr>
+        <tr>
+          <td class="ym-cell">—</td><td class="ym-cell">—</td>
+          <td><div class="timeline-entry">Datadogプラットフォーム全体のテレメトリデータ、数千件の実インシデントデータで学習</div></td>
+        </tr>
+        <tr>
+          <td class="ym-cell">—</td><td class="ym-cell">—</td>
+          <td><div class="timeline-entry green">ユーザーフィードバックで継続的に精度向上</div></td>
+        </tr>
+        <tr><td colspan="3" style="text-align:center; font-size:10px; color:#999; padding:3px;">【職 歴】</td></tr>
+        <tr>
+          <td class="ym-cell">2025</td><td class="ym-cell">6</td>
+          <td><div class="timeline-entry">DASH 2025 にて発表</div></td>
+        </tr>
+        <tr>
+          <td class="ym-cell">2025</td><td class="ym-cell">12</td>
+          <td><div class="timeline-entry green">正式リリース</div></td>
+        </tr>
+        <tr>
+          <td class="ym-cell">2026</td><td class="ym-cell">3</td>
+          <td><div class="timeline-entry orange">次世代エージェントをリリース（推論を深化し、調査速度を約2倍に高速化）</div></td>
+        </tr>
+        <tr>
+          <td class="ym-cell">2026</td><td class="ym-cell">3</td>
+          <td><div class="timeline-entry orange">プロンプトからの調査実行（モニタなし起動）をプレビュー対応</div></td>
+        </tr>
+        <tr>
+          <td class="ym-cell">2026</td><td class="ym-cell">3</td>
+          <td><div class="timeline-entry orange">Microsoft Teams 連携プレビュー対応（Slack同様に通知と合わせて調査結果を確認可能）</div></td>
+        </tr>
+        <tr>
+          <td class="ym-cell"></td><td class="ym-cell"></td>
+          <td style="text-align:right; font-size:10px; color:#999;">以上</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <!-- ===== RIGHT COLUMN ===== -->
+    <div>
+
+      <!-- Qualifications -->
+      <table style="table-layout:fixed">
+        <colgroup>
+          <col style="width:7%">
+          <col style="width:4%">
+          <col style="width:89%">
+        </colgroup>
+        <tr><td colspan="3" class="section-header">資 格 ・ 免 許</td></tr>
+        <tr>
+          <th class="ym-cell">年</th>
+          <th class="ym-cell">月</th>
+          <th>資格・免許</th>
+        </tr>
+        <tr>
+          <td class="ym-cell">2026</td><td class="ym-cell">03</td>
+          <td><span class="badge badge-purple">Bits.md</span> 出力自体も日本語対応(Preview)</td>
+        </tr>
+        <tr>
+          <td class="ym-cell">2025</td><td class="ym-cell">12</td>
+          <td><span class="badge badge-green">RBAC</span> ロールベースアクセス制御</td>
+        </tr>
+        <tr>
+          <td class="ym-cell">2025</td><td class="ym-cell">12</td>
+          <td><span class="badge badge-orange">Rate Limit</span> 24h自動調査回数を組織・Monitor単位で制御可能</td>
+        </tr>
+        <tr>
+          <td class="ym-cell">2025</td><td class="ym-cell">12</td>
+          <td><span class="badge badge-gray">Audit Trail</span> 調査の開始・完了をAudit Trailで記録・追跡可能</td>
+        </tr>
+      </table>
+
+      <!-- Motivation -->
+      <table class="motivation-box">
+        <tr><td class="section-header">志望の動機、特技、アピールポイント</td></tr>
+        <tr>
+          <td>
+            アラート発報と同時に調査を開始し、数分で根本原因を特定する<span class="highlight">「24/365 AI オンコールエンジニア」</span>です。<br>
+            2,000以上の顧客・月あたり10万件以上の調査実績があり、MTTRを<span class="highlight">最大90%短縮</span>します。<br>
+            現在はHuman in the Loopの設計でアクション実行にはエンジニアの承認が必要ですが、将来的には自律的な実行と運用の実現を目指しています。
+          </td>
+        </tr>
+      </table>
+
+      <!-- Preferences -->
+      <table>
+        <tr><td class="section-header">本人希望記入欄</td></tr>
+        <tr>
+          <td style="line-height:1.7; font-size:12px;">
+            <span class="badge badge-purple">勤務時間</span> 24時間365日対応可（シフト制限なし・休憩不要）<br>
+            <span class="badge badge-green">勤務地</span> Datadog Web UI、Mobile App、Slackから呼び出し可能<br>
+            <span class="badge badge-orange">給与</span> 実行回数課金　詳細はPricing Pageに記載　無料トライアル可能<br>
+            <span class="badge badge-gray">お願い</span> 対応手順の最新化と、調査結果への積極的なフィードバックをお願いします
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+
+
+
+
+
+</div>
+
+<!-- 日付 + QR Code: ページ右上 -->
+<div style="position:absolute; top:16px; right:20px; display:flex; align-items:flex-end; gap:10px; z-index:100;">
+  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
+    <span class="title-date">2026年 4月 15日現在</span>
+    <span class="title-date">最新情報はこちら</span>
+  </div>
+  <img src="images/Qq437X1X3kGKNrf_Untitled 2026-04-03.png" alt="QR Code" id="qr-code"
+    style="width:90px; height:90px; box-shadow:0 2px 8px rgba(0,0,0,0.15); border-radius:6px; background:#fff;">
+</div>
+
+<!-- Datadog Logo: ページ右下 -->
+<img src="images/dd_logo_h_rgb.png" alt="Datadog" id="dd-logo"
+  style="position:absolute; bottom:16px; right:20px; height:36px; width:auto; z-index:9999; opacity:0.9; background:rgba(255,255,255,0.85); padding:5px 10px; border-radius:6px;">
+
+</div>
+
+</body>
+</html>
