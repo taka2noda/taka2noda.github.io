@@ -94,7 +94,7 @@ window.DD_RUM.onReady(function() {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 18px;
+    gap: 20px;
     flex: 1;
     min-height: 0;
   }
@@ -110,22 +110,22 @@ window.DD_RUM.onReady(function() {
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 9px;
-    font-size: 11px;
+    margin-bottom: 10px;
+    font-size: 11.5px;
   }
 
   th, td {
     border: 1px solid #BFBAB0;
-    padding: 4px 7px;
+    padding: 4.5px 8px;
     text-align: left;
     vertical-align: top;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   th {
     background: var(--dd-header-bg);
     font-weight: 500;
-    font-size: 10px;
+    font-size: 10.5px;
     color: var(--dd-ink-light);
     white-space: nowrap;
     width: 1%;
@@ -137,11 +137,11 @@ window.DD_RUM.onReady(function() {
     background: var(--dd-ink);
     color: #fff;
     font-family: 'Noto Serif JP', serif;
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 700;
     letter-spacing: 4px;
     text-align: center;
-    padding: 4px 8px;
+    padding: 4.5px 8px;
   }
 
   /* === WATERMARK === */
@@ -190,7 +190,7 @@ window.DD_RUM.onReady(function() {
     display: grid;
     grid-template-columns: 1fr 120px;
     gap: 0;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .identity-left table { margin-bottom: 0; }
@@ -203,25 +203,25 @@ window.DD_RUM.onReady(function() {
     justify-content: center;
   }
 
-  .name-furigana { font-size: 9px; color: var(--dd-ink-light); letter-spacing: 2px; }
+  .name-furigana { font-size: 9.5px; color: var(--dd-ink-light); letter-spacing: 2px; }
 
   .name-main {
     font-family: 'Noto Serif JP', serif;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 700;
     letter-spacing: 3px;
     color: var(--dd-purple-dark);
   }
 
-  .name-sub { font-size: 10px; color: var(--dd-ink-light); margin-top: 2px; }
-  .dob-row td { font-size: 11px; }
+  .name-sub { font-size: 10.5px; color: var(--dd-ink-light); margin-top: 2px; }
+  .dob-row td { font-size: 11.5px; }
 
   /* === Badges === */
   .badge {
     display: inline-block;
-    padding: 2px 6px;
+    padding: 2px 6.5px;
     border-radius: 3px;
-    font-size: 9px;
+    font-size: 9.5px;
     font-weight: 700;
     letter-spacing: 0.5px;
     margin-right: 3px;
@@ -254,11 +254,11 @@ window.DD_RUM.onReady(function() {
   .timeline-entry.orange::before { background: var(--dd-orange); }
 
   /* Year/month */
-  .ym-cell { font-size: 9px; text-align: center; color: var(--dd-ink-light); width: 0; white-space: nowrap; padding: 4px 2px; }
+  .ym-cell { font-size: 9.5px; text-align: center; color: var(--dd-ink-light); width: 0; white-space: nowrap; padding: 4.5px 2px; }
   th.ym-cell { width: 0; min-width: 0; }
 
   /* Motivation */
-  .motivation-box td { line-height: 1.5; font-size: 11px; }
+  .motivation-box td { line-height: 1.6; font-size: 11.5px; }
   .highlight { color: var(--dd-purple-dark); font-weight: 700; }
 
   /* Footer */
@@ -472,7 +472,7 @@ window.DD_RUM.onReady(function() {
 </div>
 
 <!-- QR Code + Datadog Logo: ページ右下（左側の表の下端に合わせる） -->
-<div style="position:absolute; bottom:110px; right:20px; display:flex; align-items:center; gap:10px; z-index:9999;">
+<div style="position:absolute; bottom:70px; right:20px; display:flex; align-items:center; gap:10px; z-index:9999;">
   <img src="images/Qq437X1X3kGKNrf_Untitled 2026-04-03.png" alt="QR Code" id="qr-code"
     style="width:60px; height:60px; box-shadow:0 2px 8px rgba(0,0,0,0.15); border-radius:5px; background:#fff;">
   <img src="images/dd_logo_h_rgb.png" alt="Datadog" id="dd-logo"
