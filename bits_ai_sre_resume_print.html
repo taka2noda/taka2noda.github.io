@@ -137,11 +137,11 @@ window.DD_RUM.onReady(function() {
     background: var(--dd-ink);
     color: #fff;
     font-family: 'Noto Serif JP', serif;
-    font-size: 10.5px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 4px;
     text-align: center;
-    padding: 4.5px 8px;
+    padding: 5px 8px;
   }
 
   /* === WATERMARK === */
@@ -468,13 +468,15 @@ window.DD_RUM.onReady(function() {
 <!-- 日付: ページ右上 -->
 <div style="position:absolute; top:16px; right:20px; display:flex; flex-direction:column; align-items:flex-end; gap:2px; z-index:100;">
   <span class="title-date">2026年 7月 29日現在</span>
-  <span class="title-date">最新情報はこちら</span>
 </div>
 
 <!-- QR Code + Datadog Logo: ページ右下（左側の表の下端に合わせる） -->
-<div style="position:absolute; bottom:70px; right:20px; display:flex; align-items:center; gap:10px; z-index:9999;">
-  <img src="images/Qq437X1X3kGKNrf_Untitled 2026-04-03.png" alt="QR Code" id="qr-code"
-    style="width:60px; height:60px; box-shadow:0 2px 8px rgba(0,0,0,0.15); border-radius:5px; background:#fff;">
+<div style="position:absolute; bottom:56px; right:20px; display:flex; align-items:flex-end; gap:10px; z-index:9999;">
+  <div style="display:flex; flex-direction:column; align-items:center; gap:3px;">
+    <span class="title-date">最新情報はこちら</span>
+    <img src="images/Qq437X1X3kGKNrf_Untitled 2026-04-03.png" alt="QR Code" id="qr-code"
+      style="width:60px; height:60px; box-shadow:0 2px 8px rgba(0,0,0,0.15); border-radius:5px; background:#fff;">
+  </div>
   <img src="images/dd_logo_h_rgb.png" alt="Datadog" id="dd-logo"
     style="height:36px; width:auto; opacity:0.9; background:rgba(255,255,255,0.85); padding:5px 10px; border-radius:6px;">
 </div>
